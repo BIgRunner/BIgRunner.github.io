@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="自留地">
 <meta property="og:description" content="这是一篇拖了很长时间的博客了，18年中买好域名，搭好博客，却迟迟没有更新。今天正好有空（其实每天都不是很忙，只是静不下心情来记录一下），所以把以前的账还一还。 这篇博客主要是记录一下博客的搭建流程，不去探讨背后的原理等，如果你对为什么这么做有疑问，这篇博客是一个很好的回答。 OK，该交代的交代完了，开始搭！ 1 安装Hexo Hexo是一款静态博客生成器。静态的意思是指生成的博客访客只能浏览，没法">
 <meta property="og:locale" content="中文">
-<meta property="og:updated_time" content="2019-03-26T01:29:47.062Z">
+<meta property="og:updated_time" content="2019-03-26T01:31:11.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Page 搭建自己的博客">
 <meta name="twitter:description" content="这是一篇拖了很长时间的博客了，18年中买好域名，搭好博客，却迟迟没有更新。今天正好有空（其实每天都不是很忙，只是静不下心情来记录一下），所以把以前的账还一还。 这篇博客主要是记录一下博客的搭建流程，不去探讨背后的原理等，如果你对为什么这么做有疑问，这篇博客是一个很好的回答。 OK，该交代的交代完了，开始搭！ 1 安装Hexo Hexo是一款静态博客生成器。静态的意思是指生成的博客访客只能浏览，没法">
@@ -187,7 +187,37 @@
 <p>更改之后，运行指令使其生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~/.profile</span><br></pre></td></tr></table></figure></p>
 <p>创建sudo链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -s /usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/node /usr/bin/node</span><br><span class="line">$ sudo ln -s /usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/npm /usr/bin/npm</span><br><span class="line">$ sudo ln -s /usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/npx /usr/bin/npx</span><br></pre></td></tr></table></figure></p>
 <h2 id="1-2-安装Hexo"><a href="#1-2-安装Hexo" class="headerlink" title="1.2 安装Hexo"></a>1.2 安装Hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>Hexo的常用指令：<br>指令   |   功能<br>——-| ——<br>hexo init | 新建一个网站<br>hexo generate | 生成静态文件<br>hexo server | 启动服务器<br>hexo deploy | 部署网站<br>hexo clean | 清除缓存文件和public文件夹下已生成的静态文件。</p>
+<p>Hexo的常用指令：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hexo init</td>
+<td>新建一个网站</td>
+</tr>
+<tr>
+<td>hexo generate</td>
+<td>生成静态文件</td>
+</tr>
+<tr>
+<td>hexo server</td>
+<td>启动服务器</td>
+</tr>
+<tr>
+<td>hexo deploy</td>
+<td>部署网站</td>
+</tr>
+<tr>
+<td>hexo clean</td>
+<td>清除缓存文件和public文件夹下已生成的静态文件。</td>
+</tr>
+</tbody>
+</table>
 <h1 id="2-配置站点"><a href="#2-配置站点" class="headerlink" title="2 配置站点"></a>2 配置站点</h1><p>为了能够方便使用Github Page 建立一个YourName.github.io文件夹，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir YourName.github.io</span><br><span class="line">$ cd YourName.github.io</span><br></pre></td></tr></table></figure></p>
 <p>初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
 <p>在_config.yaml中更改博客网页的配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># in _config.yaml</span><br><span class="line"># Site</span><br><span class="line">title: 改个名字</span><br><span class="line">description：简单介绍</span><br><span class="line">author： 作者</span><br></pre></td></tr></table></figure></p>
