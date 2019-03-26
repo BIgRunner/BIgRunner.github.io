@@ -193,7 +193,58 @@
 <p>在_config.yaml中更改博客网页的配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># in _config.yaml</span><br><span class="line"># Site</span><br><span class="line">title: 改个名字</span><br><span class="line">description：简单介绍</span><br><span class="line">author： 作者</span><br></pre></td></tr></table></figure></p>
 <p>配置好之后，运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
 <p>启动Hexo，在localhost:4000中即可浏览相博客。</p>
-<h1 id="3-写下自己的第一篇博客"><a href="#3-写下自己的第一篇博客" class="headerlink" title="3 写下自己的第一篇博客"></a>3 写下自己的第一篇博客</h1><p>进入source/_posts文件夹，这个文件夹是用来保存生成博客的markdown文件的。在_post目录中新建一个.md文件，包括<a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">前页（Front-matter）</a>及内容。前页包含以下内容<br>参数 | 描述 | 默认值<br>—–|——|——-<br>layout | 布局 |<br>title | 标题 |<br>date | 建立日期 | 文件建立日期<br>updated | 更新日期 | 文件更新日期<br>comments | 开启文章的评论功能 | true<br>tags | 标签(不适用于分页) |<br>categories | 分类（不适用于分页）|<br>permalink | 覆盖文章网址 |</p>
+<h1 id="3-写下自己的第一篇博客"><a href="#3-写下自己的第一篇博客" class="headerlink" title="3 写下自己的第一篇博客"></a>3 写下自己的第一篇博客</h1><p>进入source/_posts文件夹，这个文件夹是用来保存生成博客的markdown文件的。在_post目录中新建一个.md文件，包括<a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">前页（Front-matter）</a>及内容。前页包含以下内容</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>layout</td>
+<td>布局</td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>建立日期</td>
+<td>文件建立日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新日期</td>
+<td>文件更新日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启文章的评论功能</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签(不适用于分页)</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>覆盖文章网址</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>使用Hexo new可以自动生成新的博客文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure></p>
 <p>Hexo中分类具有顺序和层次，而标签没有。前后分类具有父子关系。内容由markdown格式进行组织。前页与内容之间由—分隔。下面是一篇博文的示例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: My First Blog</span><br><span class="line">categories: Fun</span><br><span class="line">tags: Hexo</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">This is my first blog. Haha!</span><br></pre></td></tr></table></figure></p>
 <p>写好.md文件后，运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
