@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="自留地">
 <meta property="og:description" content="这是一篇拖了很长时间的博客了，18年中买好域名，搭好博客，却迟迟没有更新。今天正好有空（其实每天都不是很忙，只是静不下心情来记录一下），所以把以前的账还一还。 这篇博客主要是记录一下博客的搭建流程，不去探讨背后的原理等，如果你对为什么这么做有疑问，这篇博客是一个很好的回答。 OK，该交代的交代完了，开始搭！ 1 安装Hexo Hexo是一款静态博客生成器。静态的意思是指生成的博客访客只能浏览，没法">
 <meta property="og:locale" content="中文">
-<meta property="og:updated_time" content="2019-03-26T01:31:11.178Z">
+<meta property="og:updated_time" content="2019-03-26T05:14:15.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Page 搭建自己的博客">
 <meta name="twitter:description" content="这是一篇拖了很长时间的博客了，18年中买好域名，搭好博客，却迟迟没有更新。今天正好有空（其实每天都不是很忙，只是静不下心情来记录一下），所以把以前的账还一还。 这篇博客主要是记录一下博客的搭建流程，不去探讨背后的原理等，如果你对为什么这么做有疑问，这篇博客是一个很好的回答。 OK，该交代的交代完了，开始搭！ 1 安装Hexo Hexo是一款静态博客生成器。静态的意思是指生成的博客访客只能浏览，没法">
@@ -292,6 +292,8 @@
 <h1 id="6-更换主题"><a href="#6-更换主题" class="headerlink" title="6 更换主题"></a>6 更换主题</h1><p>个人比较喜欢朴素的主题，在<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">知乎上按推荐的主题</a>，选择了yilia这款主题，当然<a href="https://www.ezlippi.com/" target="_blank" rel="noopener">Lippi-浮生志</a>和<a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener">Maupassant</a>也很不错。先进入博客根目录，下载yilia主题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure></p>
 <p>之后将_config.yml中的theme改为yilia，即可启用新主题。<br>当然如果有兴趣，也可以自己<a href="https://www.ahonn.me/2016/12/15/create-a-hexo-theme-from-scratch/" target="_blank" rel="noopener">完成一个属于自己的主题</a>。</p>
 <p>网站结果</p>
+<p>增加目录，按照提示，在博客根目录下运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i hexo-generator-json-content --save</span><br></pre></td></tr></table></figure></p>
+<p>在_config.yml中添加如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># in _config.yml</span><br><span class="line">jsonContent:</span><br><span class="line">  meta: false</span><br><span class="line">  pages: false</span><br><span class="line">  posts:</span><br><span class="line">    title: true</span><br><span class="line">    date: true</span><br><span class="line">    path: true</span><br><span class="line">        text: false</span><br><span class="line">        raw: false</span><br><span class="line">        content: false</span><br><span class="line">        slug: false</span><br><span class="line">        updated: false</span><br><span class="line">        comments: false</span><br><span class="line">        link: false</span><br><span class="line">        permalink: false</span><br><span class="line">        excerpt: false</span><br><span class="line">        categories: false</span><br><span class="line">        tags: true</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -405,6 +407,20 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2019/03/26/hexo-code-trick/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hexo 使用小技巧
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -523,6 +539,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hexo VSCode</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>

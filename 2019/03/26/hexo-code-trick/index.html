@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.meanmap.xyz">
-  <title>Archives: 2019/3 | 自留地</title>
+  <title>Hexo 使用小技巧 | 自留地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一分耕耘，一分收获">
-<meta property="og:type" content="website">
-<meta property="og:title" content="自留地">
-<meta property="og:url" content="http://www.meanmap.xyz/archives/2019/03/index.html">
+  <meta name="description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。 1 使用VS Code 打开新博客文件首先在你的电脑上安装好VS Code. 之后在博客根目录下，新建scripts/AutoOpenEditor.js文件，如果没有scripts文件夹，新建一个。123$ mkdir scripts$ touch AutoOpenEditor.js$ vi scripts/A">
+<meta name="keywords" content="Hexo VSCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 使用小技巧">
+<meta property="og:url" content="http://www.meanmap.xyz/2019/03/26/hexo-code-trick/index.html">
 <meta property="og:site_name" content="自留地">
-<meta property="og:description" content="一分耕耘，一分收获">
+<meta property="og:description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。 1 使用VS Code 打开新博客文件首先在你的电脑上安装好VS Code. 之后在博客根目录下，新建scripts/AutoOpenEditor.js文件，如果没有scripts文件夹，新建一个。123$ mkdir scripts$ touch AutoOpenEditor.js$ vi scripts/A">
 <meta property="og:locale" content="中文">
+<meta property="og:updated_time" content="2019-03-26T05:14:13.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自留地">
-<meta name="twitter:description" content="一分耕耘，一分收获">
+<meta name="twitter:title" content="Hexo 使用小技巧">
+<meta name="twitter:description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。 1 使用VS Code 打开新博客文件首先在你的电脑上安装好VS Code. 之后在博客根目录下，新建scripts/AutoOpenEditor.js文件，如果没有scripts文件夹，新建一个。123$ mkdir scripts$ touch AutoOpenEditor.js$ vi scripts/A">
   
     <link rel="alternative" href="/atom.xml" title="自留地" type="application/atom+xml">
   
@@ -153,36 +155,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-hexo-code-trick" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/26/hexo-code-trick/" class="archive-article-date">
-  	<time datetime="2019-03-26T02:34:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/26/hexo-code-trick/">Hexo 使用小技巧</a>
+    <h1 class="article-title" itemprop="name">
+      Hexo 使用小技巧
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/03/26/hexo-code-trick/" class="archive-article-date">
+  	<time datetime="2019-03-26T02:34:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。</p>
+<h1 id="1-使用VS-Code-打开新博客文件"><a href="#1-使用VS-Code-打开新博客文件" class="headerlink" title="1 使用VS Code 打开新博客文件"></a>1 <a href="https://leaferx.online/2018/03/17/hexo-auto-open-vscode/" target="_blank" rel="noopener">使用VS Code 打开新博客文件</a></h1><p>首先在你的电脑上安装好<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a>.</p>
+<p>之后在博客根目录下，新建scripts/AutoOpenEditor.js文件，如果没有scripts文件夹，新建一个。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir scripts</span><br><span class="line">$ touch AutoOpenEditor.js</span><br><span class="line">$ vi scripts/AutoOpenEditor.js</span><br></pre></td></tr></table></figure></p>
+<p>在文件中写下如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let spawn = require(&apos;hexo-util/lib/spawn&apos;);</span><br><span class="line"></span><br><span class="line">hexo.on(&apos;new&apos;, (data))=&gt;&#123;</span><br><span class="line">    spawn(&apos;code&apos;),[hexo.base_dir, data.path]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>完成后，每次调用hexo new命令都会用VS Code自动打开新.md文件。</p>
+<h1 id="2-VS-Code直接布署博客-1"><a href="#2-VS-Code直接布署博客-1" class="headerlink" title="2 VS Code直接布署博客^1"></a>2 VS Code直接布署博客<a href="https://blog.rule55.com/hexo/" target="_blank" rel="noopener">^1</a></h1><p>在VS Code中写好博客之后，如果每次都要打开终端重新进行布署，实在有些麻烦。<a href="https://blog.rule55.com/hexo/" target="_blank" rel="noopener">百度一下之后发现有人早就利用VS Code任务解决了这个问题</a>。现在把解决方法摘录如下。</p>
+<p>在博客根目录下新建.vscode/task.json，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># in .vscode/task.json</span><br><span class="line">&#123;</span><br><span class="line">    &quot;label&quot;: &quot;Generate and Deploy Hexo Blog&quot;,</span><br><span class="line">    &quot;type&quot;: &quot;shell&quot;,</span><br><span class="line">    &quot;command&quot;: &quot;bash -c \&quot;cd $YOUR_BLOG_PATH;hexo clean;hexo g -d\&quot;&quot;,</span><br><span class="line">    &quot;group&quot;: &#123;</span><br><span class="line">        &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">        &quot;isDefault&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>之后，按下Ctrl+Shift+B即可执行。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,7 +223,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -207,66 +236,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.meanmap.xyz/2019/03/26/hexo-code-trick/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/hexo-githubpage-blog/" class="archive-article-date">
-  	<time datetime="2019-03-25T08:51:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/25/hexo-githubpage-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo+Github Page 搭建自己的博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/hexo-githubpage-blog/">Hexo+Github Page 搭建自己的博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Fun//" class="article-tag-list-link color4">Fun</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -289,8 +356,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
