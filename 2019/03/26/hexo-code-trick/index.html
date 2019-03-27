@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="www.meanmap.xyz">
   <title>Hexo 使用小技巧 | 自留地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。">
+  <meta name="description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu，所选用的主题为yilia，这里提到的几点建议都是在上述环境下进行的，其他系统或主题请根据自己需求自取。">
 <meta name="keywords" content="Hexo,VSCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 使用小技巧">
 <meta property="og:url" content="www.meanmap.xyz/2019/03/26/hexo-code-trick/index.html">
 <meta property="og:site_name" content="自留地">
-<meta property="og:description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。">
+<meta property="og:description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu，所选用的主题为yilia，这里提到的几点建议都是在上述环境下进行的，其他系统或主题请根据自己需求自取。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-27T01:19:25.139Z">
+<meta property="og:updated_time" content="2019-03-27T02:09:39.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 使用小技巧">
-<meta name="twitter:description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。">
+<meta name="twitter:description" content="本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu，所选用的主题为yilia，这里提到的几点建议都是在上述环境下进行的，其他系统或主题请根据自己需求自取。">
   
     <link rel="alternative" href="/atom.xml" title="自留地" type="application/atom+xml">
   
@@ -175,7 +175,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。<br><a id="more"></a></p>
+        <p>本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu，所选用的主题为yilia，这里提到的几点建议都是在上述环境下进行的，其他系统或主题请根据自己需求自取。<br><a id="more"></a></p>
 <h3 id="1-使用VS-Code-打开新博客文件"><a href="#1-使用VS-Code-打开新博客文件" class="headerlink" title="1 使用VS Code 打开新博客文件"></a>1 <a href="https://leaferx.online/2018/03/17/hexo-auto-open-vscode/" target="_blank" rel="noopener">使用VS Code 打开新博客文件</a></h3><p>首先在你的电脑上安装好<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a>.</p>
 <p>之后在博客根目录下，新建scripts/AutoOpenEditor.js文件，如果没有scripts文件夹，新建一个。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir scripts</span><br><span class="line">$ touch AutoOpenEditor.js</span><br><span class="line">$ vi scripts/AutoOpenEditor.js</span><br></pre></td></tr></table></figure></p>
 <p>在文件中写下如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let spawn = require(&apos;hexo-util/lib/spawn&apos;);</span><br><span class="line"></span><br><span class="line">hexo.on(&apos;new&apos;, (data))=&gt;&#123;</span><br><span class="line">    spawn(&apos;code&apos;),[hexo.base_dir, data.path]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
@@ -184,6 +184,11 @@
 <p>在博客根目录下新建.vscode/task.json，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># in .vscode/task.json</span><br><span class="line">&#123;</span><br><span class="line">    &quot;label&quot;: &quot;Generate and Deploy Hexo Blog&quot;,</span><br><span class="line">    &quot;type&quot;: &quot;shell&quot;,</span><br><span class="line">    &quot;command&quot;: &quot;bash -c \&quot;cd $YOUR_BLOG_PATH;hexo clean;hexo g -d\&quot;&quot;,</span><br><span class="line">    &quot;group&quot;: &#123;</span><br><span class="line">        &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">        &quot;isDefault&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>之后，按下Ctrl+Shift+B即可执行。</p>
 <h3 id="3-使用SSH提交Github免输密码"><a href="#3-使用SSH提交Github免输密码" class="headerlink" title="3 使用SSH提交Github免输密码"></a>3 <a href="https://blog.csdn.net/hhgggggg/article/details/77853665" target="_blank" rel="noopener">使用SSH提交Github免输密码</a></h3><p>现在每次执行部署指令都要重新输入一次用户名和密码，实在有些烦。查看网上资料，说是由于使用https提交Github的原因，但在Github的仓库页面上显示使用SSH进行clone。真正的原因在_config.yml的deploy配置上，使用的是https，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># in _config.yml</span><br><span class="line"># 原内容</span><br><span class="line"># deploy:</span><br><span class="line">#     type: git</span><br><span class="line">#     repo: https://github.com/YourName/YourName.github.io.git</span><br><span class="line">#     branch: master</span><br><span class="line"># 改为</span><br><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: git@github.com:YourName/YourName.Github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-文章截断显示"><a href="#4-文章截断显示" class="headerlink" title="4 文章截断显示"></a>4 文章截断显示</h3><p>所使用的yilia主题主页文章显示长度太长，几乎要全文显示了，不方便浏览，需要截断显示。具体方法为：在每篇博文中添加\<!-- more -->标记，标记之前的部分会在主页上，标记之后的部分隐蒧，博文示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">title: 截断示例</span><br><span class="line">tags: test</span><br></pre></td></tr></table></figure></p>
+<p>因为这部分在标记之前，所以将被显示。</p>
+<!-- more -->
+<p>剩下的部分会被隐蒧，需要点击“显示全文”才可见。为了避免重复显示，需要将theme/yilia中的_config.yml配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 将下面这句注销</span><br><span class="line"># excerpt_link: more</span><br></pre></td></tr></table></figure></p>
+<p>之后就可以在博客中查看效果了。</p>
 <hr>
 
       
