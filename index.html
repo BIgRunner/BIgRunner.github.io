@@ -175,14 +175,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一个寒假的时间（其实90%都是在火车上读的），终于把这本小书又读了一遍，第一次读这本书应该是两年前了，当时做了一些笔记，但是好东西需要分享，所以有了这篇小记。<br>《财富课》其实是一本理财启蒙书籍，名声与《穷爸爸富爸爸》伯仲之间。作为理财小白，二选一就可以了。《穷爸爸富爸爸》是我读过的第一本理财书藉，也是在那本书中第一次了解了资产、消费和负债等概念。但是《财富课》却讲述了古巴比伦的几个故事，在故事中将理财的方法道出。如果想教育下一代，买一本《小狗钱钱》。 </p>
+        <p>一个寒假的时间（其实90%都是在火车上读的），终于把这本小书又读了一遍，第一次读这本书应该是两年前了，当时做了一些笔记，但是好东西需要分享，所以有了这篇小记。<br>《财富课》其实是一本理财启蒙书籍，名声与《穷爸爸富爸爸》伯仲之间。作为理财小白，二选一就可以了。《穷爸爸富爸爸》是我读过的第一本理财书藉，也是在那本书中第一次了解了资产、消费和负债等概念。但是《财富课》却讲述了古巴比伦的几个故事，在故事中将理财的方法道出。如果想教育下一代，买一本《小狗钱钱》。<br>
         
           <a class="article-more-a" href="/2019/03/27/The-Richest-Man-In-Babylon/#more">more >></a>
         
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -262,21 +262,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。</p>
-<h1 id="1-使用VS-Code-打开新博客文件"><a href="#1-使用VS-Code-打开新博客文件" class="headerlink" title="1 使用VS Code 打开新博客文件"></a>1 <a href="https://leaferx.online/2018/03/17/hexo-auto-open-vscode/" target="_blank" rel="noopener">使用VS Code 打开新博客文件</a></h1><p>首先在你的电脑上安装好<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a>.</p>
-<p>之后在博客根目录下，新建scripts/AutoOpenEditor.js文件，如果没有scripts文件夹，新建一个。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir scripts</span><br><span class="line">$ touch AutoOpenEditor.js</span><br><span class="line">$ vi scripts/AutoOpenEditor.js</span><br></pre></td></tr></table></figure></p>
-<p>在文件中写下如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let spawn = require(&apos;hexo-util/lib/spawn&apos;);</span><br><span class="line"></span><br><span class="line">hexo.on(&apos;new&apos;, (data))=&gt;&#123;</span><br><span class="line">    spawn(&apos;code&apos;),[hexo.base_dir, data.path]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>完成后，每次调用hexo new命令都会用VS Code自动打开新.md文件。</p>
-<h1 id="2-VS-Code直接布署博客1"><a href="#2-VS-Code直接布署博客1" class="headerlink" title="2 VS Code直接布署博客1"></a>2 VS Code直接布署博客<a href="https://blog.rule55.com/hexo/" target="_blank" rel="noopener">1</a></h1><p>在VS Code中写好博客之后，如果每次都要打开终端重新进行布署，实在有些麻烦。<a href="https://blog.rule55.com/hexo/" target="_blank" rel="noopener">百度一下之后发现有人早就利用VS Code任务解决了这个问题</a>。现在把解决方法摘录如下。</p>
-<p>在博客根目录下新建.vscode/task.json，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># in .vscode/task.json</span><br><span class="line">&#123;</span><br><span class="line">    &quot;label&quot;: &quot;Generate and Deploy Hexo Blog&quot;,</span><br><span class="line">    &quot;type&quot;: &quot;shell&quot;,</span><br><span class="line">    &quot;command&quot;: &quot;bash -c \&quot;cd $YOUR_BLOG_PATH;hexo clean;hexo g -d\&quot;&quot;,</span><br><span class="line">    &quot;group&quot;: &#123;</span><br><span class="line">        &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">        &quot;isDefault&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>之后，按下Ctrl+Shift+B即可执行。</p>
-<h1 id="3-使用SSH提交Github免输密码"><a href="#3-使用SSH提交Github免输密码" class="headerlink" title="3 使用SSH提交Github免输密码"></a>3 <a href="https://blog.csdn.net/hhgggggg/article/details/77853665" target="_blank" rel="noopener">使用SSH提交Github免输密码</a></h1><p>现在每次执行部署指令都要重新输入一次用户名和密码，实在有些烦。查看网上资料，说是由于使用https提交Github的原因，但在Github的仓库页面上显示使用SSH进行clone。真正的原因在_config.yml的deploy配置上，使用的是https，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># in _config.yml</span><br><span class="line"># 原内容</span><br><span class="line"># deploy:</span><br><span class="line">#     type: git</span><br><span class="line">#     repo: https://github.com/YourName/YourName.github.io.git</span><br><span class="line">#     branch: master</span><br><span class="line"># 改为</span><br><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: git@github.com:YourName/YourName.Github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></p>
-<hr>
-
+        <p>本文主要收录一些Hexo的使用小技巧，会不定时进行更新，本地端操作系统为Ubuntu。<br>
+        
+          <a class="article-more-a" href="/2019/03/26/hexo-code-trick/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -361,129 +354,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>这是一篇拖了很长时间的博客了，18年中买好域名，搭好博客，却迟迟没有更新。今天正好有空（其实每天都不是很忙，只是静不下心情来记录一下），所以把以前的账还一还。</p>
-<p>这篇博客主要是记录一下博客的搭建流程，不去探讨背后的原理等，如果你对为什么这么做有疑问，<a href="http://lowrank.science/Hexo-Github/" target="_blank" rel="noopener">这篇博客</a>是一个很好的回答。</p>
-<p>OK，该交代的交代完了，开始搭！</p>
-<h1 id="1-安装Hexo"><a href="#1-安装Hexo" class="headerlink" title="1 安装Hexo"></a>1 安装Hexo</h1><blockquote>
-<p>Hexo是一款静态博客生成器。静态的意思是指生成的博客访客只能浏览，没法进行交互。</p>
-</blockquote>
-<h2 id="1-1-预备"><a href="#1-1-预备" class="headerlink" title="1.1 预备"></a>1.1 预备</h2><p>要安装Hexo，首先要安装git和Node.js。安装git很简单，一条命令搞定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure></p>
-<p>之后，下载安装<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">Node.js</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ VERSION=v10.15.3</span><br><span class="line">$ DISTRO=linux-x64</span><br><span class="line">$ sudo mkdir -p /usr/local/lib/nodejs</span><br><span class="line">$ sudo tar -xJvf node-$VERSION-$DISTRO.tar.xz -C /usr/local/lib/nodejs</span><br></pre></td></tr></table></figure></p>
-<p>在~/.profile中添加变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># in ~/.profile</span><br><span class="line"># Nodejs</span><br><span class="line">VERSION=v10.15.3</span><br><span class="line">DISTRO=linux-x64</span><br><span class="line">export PATH=/usr/local/lib/nodejs/node-$VERSION-#DISTRO/bin:$PATH</span><br></pre></td></tr></table></figure></p>
-<p>更改之后，运行指令使其生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~/.profile</span><br></pre></td></tr></table></figure></p>
-<p>创建sudo链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -s /usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/node /usr/bin/node</span><br><span class="line">$ sudo ln -s /usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/npm /usr/bin/npm</span><br><span class="line">$ sudo ln -s /usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/npx /usr/bin/npx</span><br></pre></td></tr></table></figure></p>
-<h2 id="1-2-安装Hexo"><a href="#1-2-安装Hexo" class="headerlink" title="1.2 安装Hexo"></a>1.2 安装Hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>Hexo的常用指令：</p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>hexo init</td>
-<td>新建一个网站</td>
-</tr>
-<tr>
-<td>hexo generate</td>
-<td>生成静态文件</td>
-</tr>
-<tr>
-<td>hexo server</td>
-<td>启动服务器</td>
-</tr>
-<tr>
-<td>hexo deploy</td>
-<td>部署网站</td>
-</tr>
-<tr>
-<td>hexo clean</td>
-<td>清除缓存文件和public文件夹下已生成的静态文件。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="2-配置站点"><a href="#2-配置站点" class="headerlink" title="2 配置站点"></a>2 配置站点</h1><p>为了能够方便使用Github Page 建立一个YourName.github.io文件夹，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir YourName.github.io</span><br><span class="line">$ cd YourName.github.io</span><br></pre></td></tr></table></figure></p>
-<p>初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
-<p>在_config.yaml中更改博客网页的配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># in _config.yaml</span><br><span class="line"># Site</span><br><span class="line">title: 改个名字</span><br><span class="line">description：简单介绍</span><br><span class="line">author： 作者</span><br></pre></td></tr></table></figure></p>
-<p>配置好之后，运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
-<p>启动Hexo，在localhost:4000中即可浏览相博客。</p>
-<h1 id="3-写下自己的第一篇博客"><a href="#3-写下自己的第一篇博客" class="headerlink" title="3 写下自己的第一篇博客"></a>3 写下自己的第一篇博客</h1><p>进入source/_posts文件夹，这个文件夹是用来保存生成博客的markdown文件的。在_post目录中新建一个.md文件，包括<a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">前页（Front-matter）</a>及内容。前页包含以下内容</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>layout</td>
-<td>布局</td>
-<td></td>
-</tr>
-<tr>
-<td>title</td>
-<td>标题</td>
-<td></td>
-</tr>
-<tr>
-<td>date</td>
-<td>建立日期</td>
-<td>文件建立日期</td>
-</tr>
-<tr>
-<td>updated</td>
-<td>更新日期</td>
-<td>文件更新日期</td>
-</tr>
-<tr>
-<td>comments</td>
-<td>开启文章的评论功能</td>
-<td>true</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>标签(不适用于分页)</td>
-<td></td>
-</tr>
-<tr>
-<td>categories</td>
-<td>分类（不适用于分页）</td>
-<td></td>
-</tr>
-<tr>
-<td>permalink</td>
-<td>覆盖文章网址</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>使用Hexo new可以自动生成新的博客文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure></p>
-<p>Hexo中分类具有顺序和层次，而标签没有。前后分类具有父子关系。内容由markdown格式进行组织。前页与内容之间由—分隔。下面是一篇博文的示例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: My First Blog</span><br><span class="line">categories: Fun</span><br><span class="line">tags: Hexo</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">This is my first blog. Haha!</span><br></pre></td></tr></table></figure></p>
-<p>写好.md文件后，运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>生成静态文件，再启动Hexo服务器就可以在本地查看博客。</p>
-<h1 id="4-部署到Github"><a href="#4-部署到Github" class="headerlink" title="4 部署到Github"></a>4 部署到Github</h1><p>首先在github上建立一个名为YourName.github.io的仓库，建立仓库的时候要注意勾选自动生成README..md，不然没法部署成功。确保你的电脑已经能够连接github。</p>
-<p>在终端运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git -save</span><br></pre></td></tr></table></figure></p>
-<p>更改_config.yml中的参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># in config.yml</span><br><span class="line">deploy:</span><br><span class="line">  type:git</span><br><span class="line">  repo:https://github.com/YourName/YourName.github.io.git</span><br><span class="line">  branch:master</span><br></pre></td></tr></table></figure></p>
-<p>运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>完成博客的部署。等待15分钟左右，在浏览器中输入YourName.github.io即可打开博客。</p>
-<h1 id="5-绑定域名"><a href="#5-绑定域名" class="headerlink" title="5 绑定域名"></a>5 绑定域名</h1><p>购买域名，并进行解析，可以在阿里云或者在腾迅云上进行购买。</p>
-<p>在source中添加文件CNAME，CNAME中包含你购买的域名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># in CNAME</span><br><span class="line">www.yoursite.name</span><br></pre></td></tr></table></figure>
-<p>运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>进行重新部署。打开网址<a href="http://www.yoursite.name，就可以看到搭建好的博客了。当前的博客还有点丑，换个新的主题来美化一下。" target="_blank" rel="noopener">www.yoursite.name，就可以看到搭建好的博客了。当前的博客还有点丑，换个新的主题来美化一下。</a></p>
-<h1 id="6-更换主题"><a href="#6-更换主题" class="headerlink" title="6 更换主题"></a>6 更换主题</h1><p>个人比较喜欢朴素的主题，在<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">知乎上按推荐的主题</a>，选择了yilia这款主题，当然<a href="https://www.ezlippi.com/" target="_blank" rel="noopener">Lippi-浮生志</a>和<a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener">Maupassant</a>也很不错。先进入博客根目录，下载yilia主题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure></p>
-<p>之后将_config.yml中的theme改为yilia，即可启用新主题。<br>当然如果有兴趣，也可以自己<a href="https://www.ahonn.me/2016/12/15/create-a-hexo-theme-from-scratch/" target="_blank" rel="noopener">完成一个属于自己的主题</a>。</p>
-<p>网站结果</p>
-<p>增加目录，按照提示，在博客根目录下运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i hexo-generator-json-content --save</span><br></pre></td></tr></table></figure></p>
-<p>在_config.yml中添加如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># in _config.yml</span><br><span class="line">jsonContent:</span><br><span class="line">  meta: false</span><br><span class="line">  pages: false</span><br><span class="line">  posts:</span><br><span class="line">    title: true</span><br><span class="line">    date: true</span><br><span class="line">    path: true</span><br><span class="line">        text: false</span><br><span class="line">        raw: false</span><br><span class="line">        content: false</span><br><span class="line">        slug: false</span><br><span class="line">        updated: false</span><br><span class="line">        comments: false</span><br><span class="line">        link: false</span><br><span class="line">        permalink: false</span><br><span class="line">        excerpt: false</span><br><span class="line">        categories: false</span><br><span class="line">        tags: true</span><br></pre></td></tr></table></figure></p>
-
+<p>这篇博客主要是记录一下博客的搭建流程，不去探讨背后的原理等，如果你对为什么这么做有疑问，<a href="http://lowrank.science/Hexo-Github/" target="_blank" rel="noopener">这篇博客</a>是一个很好的回答。<br>
+        
+          <a class="article-more-a" href="/2019/03/25/hexo-githubpage-blog/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
