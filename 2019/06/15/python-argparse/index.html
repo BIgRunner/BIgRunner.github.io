@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="www.meanmap.xyz">
-  <title>Tag: 随笔 | 自留地</title>
+  <title>python的argparse模块(1) | 自留地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一分耕耘，一分收获">
-<meta property="og:type" content="website">
-<meta property="og:title" content="自留地">
-<meta property="og:url" content="www.meanmap.xyz/tags/随笔/index.html">
+  <meta name="description" content="最近在写一个python小程序，需要从命令行中读取参数值，并传入主函数中。通过搜索，发现python的argparse正好提供命令行解析功能，正好学习一下。关于argparse模块的介绍，会有两篇文章，主要是对官方教程的翻译[^2]，第一篇是入门篇，快速上手，应对日常使用；第二篇会是进阶篇，深入了解argparse中的各个参数选项。">
+<meta name="keywords" content="python,coding,argparse">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python的argparse模块(1)">
+<meta property="og:url" content="www.meanmap.xyz/2019/06/15/python-argparse/index.html">
 <meta property="og:site_name" content="自留地">
-<meta property="og:description" content="一分耕耘，一分收获">
+<meta property="og:description" content="最近在写一个python小程序，需要从命令行中读取参数值，并传入主函数中。通过搜索，发现python的argparse正好提供命令行解析功能，正好学习一下。关于argparse模块的介绍，会有两篇文章，主要是对官方教程的翻译[^2]，第一篇是入门篇，快速上手，应对日常使用；第二篇会是进阶篇，深入了解argparse中的各个参数选项。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-15T15:22:52.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自留地">
-<meta name="twitter:description" content="一分耕耘，一分收获">
+<meta name="twitter:title" content="python的argparse模块(1)">
+<meta name="twitter:description" content="最近在写一个python小程序，需要从命令行中读取参数值，并传入主函数中。通过搜索，发现python的argparse正好提供命令行解析功能，正好学习一下。关于argparse模块的介绍，会有两篇文章，主要是对官方教程的翻译[^2]，第一篇是入门篇，快速上手，应对日常使用；第二篇会是进阶篇，深入了解argparse中的各个参数选项。">
   
     <link rel="alternative" href="/atom.xml" title="自留地" type="application/atom+xml">
   
@@ -153,71 +155,215 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python-argparse" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/The-Richest-Man-In-Babylon/" class="archive-article-date">
-  	<time datetime="2019-03-27T00:59:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/The-Richest-Man-In-Babylon/">再读《巴比伦富翁的财富课》</a>
+    <h1 class="article-title" itemprop="name">
+      python的argparse模块(1)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/15/python-argparse/" class="archive-article-date">
+  	<time datetime="2019-06-15T15:19:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在写一个python小程序，需要从命令行中读取参数值，并传入主函数中。通过搜索，发现python的argparse正好提供命令行解析功能，正好学习一下。关于argparse模块的介绍，会有两篇文章，主要是对官方教程的翻译[^2]，第一篇是入门篇，快速上手，应对日常使用；第二篇会是进阶篇，深入了解argparse中的各个参数选项。</p>
+<a id="more"></a>
+<h1 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h1><p>argparse模块的目的是为python程序提供类似于Linux命令的参数解析形式，典型的Linux命令如ls。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br></pre></td></tr></table></figure></p>
+<p>ls <strong>命令</strong>会列出当前文件夹下的所有文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls /usr</span><br></pre></td></tr></table></figure></p>
+<p>传入/usr作为<strong>位置参数</strong>，结果会列出/usr中的所有文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l</span><br></pre></td></tr></table></figure></p>
+<p>传入-l作为<strong>可选参数</strong>，将改变输出的形式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls --help</span><br></pre></td></tr></table></figure></p>
+<p>传入–help或者-h，将输出<strong>帮助文档</strong>。</p>
+<h1 id="2-基础"><a href="#2-基础" class="headerlink" title="2. 基础"></a>2. 基础</h1><p>新建一个简单的prog.py文档，在prog.py中写入以下内容：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.parser_args()</span><br></pre></td></tr></table></figure></p>
+<p>此时parser对象中没有添加任何参数，因此不会解析任何参数，仅提供帮助文档，此时传入参数会报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ python3 prog.py</span><br><span class="line">$ python3 prog.py --help</span><br><span class="line">usage: prog.py [-h]</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help  show this help message and exit</span><br><span class="line"> </span><br><span class="line">$ python3 prog.py foo</span><br><span class="line">usage: prog.py [-h]</span><br><span class="line">prog.py: error: unrecognized arguments: foo</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-1-位置参数"><a href="#2-1-位置参数" class="headerlink" title="2.1 位置参数"></a>2.1 位置参数</h2><p>修改原文件为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line">parser = argparse.SrgumentParser()</span><br><span class="line">parser.add_argument(&quot;square&quot;, help=&quot;displayy a square of a given number&quot;, type=int)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line">print(args.square**2)</span><br></pre></td></tr></table></figure></p>
+<p>通过add_argument()方法为parser对象添加参数，第一个为参数名称，当名称前没有短划线 - 或 – 时为位置参数，用help参数添加说明，用type指定类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ python3 prog.py -h</span><br><span class="line">usage: prog.py [-h] square</span><br><span class="line"></span><br><span class="line">positional arguments:</span><br><span class="line">  square      display a square of a given number</span><br><span class="line">  </span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help  show this help message and exit</span><br><span class="line"></span><br><span class="line">$ python3 prog.py 4</span><br><span class="line">16</span><br><span class="line"></span><br><span class="line">$ python3 prog.py four</span><br><span class="line">usage: prog.py [-h] square</span><br><span class="line">prog.py: error: argument square: invilid int value: &apos;four&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-可选参数"><a href="#2-2-可选参数" class="headerlink" title="2.2 可选参数"></a>2.2 可选参数</h2><p>修改prog.py为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(&quot;-v&quot;, &quot;--verbose&quot;, help=&quot;increase output verbosity&quot;,</span><br><span class="line">                    action=&quot;store_true&quot;)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line">if args.verbose:</span><br><span class="line">    print(verbosity turned on&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>在add_argument中添加以短横线开始的参数，”-v”为参数简写形式，可省略，”–verbose”为可选参数全名，action指定参数行为，”store_true”含义为若指定verbose可选参数，其值为真，否则为假，本例中以此控制结果输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ python3 prog.py</span><br><span class="line"></span><br><span class="line">$ python3 prog.py -v </span><br><span class="line">verbosity turned on</span><br><span class="line">$ python3 prog.py --help</span><br><span class="line">usage: prog.py [-h] [-v]</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help     show this help message and exit</span><br><span class="line">  -v, --verbose  increase output verbosity</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-混合使用位置参数和可选参数"><a href="#2-3-混合使用位置参数和可选参数" class="headerlink" title="2.3 混合使用位置参数和可选参数"></a>2.3 混合使用位置参数和可选参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(&quot;square&quot;, type=int,</span><br><span class="line">                    help=&quot;display a square of a given number&quot;)</span><br><span class="line">parser.add_argument(&quot;-v&quot;, &quot;--verbosity&quot;, type=int,</span><br><span class="line">                    help=&quot;increase output verbosity&quot;)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line">answer = args.square**2</span><br><span class="line">if args.verbosity == 2:</span><br><span class="line">    print(&quot;the square of &#123;&#125; equals &#123;&#125;&quot;.format(args.square, answer))</span><br><span class="line">elif args.verbosity == 1:</span><br><span class="line">    print(&quot;&#123;&#125;^2 == &#123;&#125;&quot;.format(args.square, answer))</span><br><span class="line">else:</span><br><span class="line">    print(answer)</span><br></pre></td></tr></table></figure>
+<p>将int型数据读入verbosity，以选择不同的输出形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ python3 prog.py 4</span><br><span class="line">16</span><br><span class="line">$ python3 prog.py 4 -v</span><br><span class="line">usage: prog.py [-h] [-v VERBOSITY] square</span><br><span class="line">prog.py: error: argument -v/--verbosity: expected one argument</span><br><span class="line">$ python3 prog.py 4 -v 1</span><br><span class="line">4^2 == 16</span><br><span class="line">$ python3 prog.py 4 -v 2</span><br><span class="line">the square of 4 equals 16</span><br><span class="line">$ python3 prog.py 4 -v 3</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
+<p>更进一步，对verbosity的范围进行限制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(&quot;square&quot;, type=int,</span><br><span class="line">                    help=&quot;display a square of a given number&quot;)</span><br><span class="line">parser.add_argument(&quot;-v&quot;, &quot;--verbosity&quot;, type=int, choices=[0, 1, 2],</span><br><span class="line">                    help=&quot;increase output verbosity&quot;)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line">answer = args.square**2</span><br><span class="line">if args.verbosity == 2:</span><br><span class="line">    print(&quot;the square of &#123;&#125; equals &#123;&#125;&quot;.format(args.square, answer))</span><br><span class="line">elif args.verbosity == 1:</span><br><span class="line">    print(&quot;&#123;&#125;^2 == &#123;&#125;&quot;.format(args.square, answer))</span><br><span class="line">else:</span><br><span class="line">    print(answer)</span><br></pre></td></tr></table></figure></p>
+<p>在add_argument方法中添加choice参数来完成对可选参数取值范围的限制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ python3 prog.py 4 -v 3</span><br><span class="line">usage: prog.py [-h] [-v &#123;0,1,2&#125;] square</span><br><span class="line">prog.py: error: argument -v/--verbosity: invalid choice: 3 (choose from 0, 1, 2)</span><br><span class="line">$ python3 prog.py 4 -h</span><br><span class="line">usage: prog.py [-h] [-v &#123;0,1,2&#125;] square</span><br><span class="line"></span><br><span class="line">positional arguments:</span><br><span class="line">  square                display a square of a given number</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  -v &#123;0,1,2&#125;, --verbosity &#123;0,1,2&#125;</span><br><span class="line">                        increase output verbosity</span><br></pre></td></tr></table></figure>
+<p>下面使用一种不同的方式来实现可选参数的选择，这种方式更加常用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(&quot;square&quot;, type=int,</span><br><span class="line">                    help=&quot;display the square of a given number&quot;)</span><br><span class="line">parser.add_argument(&quot;-v&quot;, &quot;--verbosity&quot;, action=&quot;count&quot;,</span><br><span class="line">                    help=&quot;increase output verbosity&quot;)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line">answer = args.square**2</span><br><span class="line">if args.verbosity == 2:</span><br><span class="line">    print(&quot;the square of &#123;&#125; equals &#123;&#125;&quot;.format(args.square, answer))</span><br><span class="line">elif args.verbosity == 1:</span><br><span class="line">    print(&quot;&#123;&#125;^2 == &#123;&#125;&quot;.format(args.square, answer))</span><br><span class="line">else:</span><br><span class="line">    print(answer)</span><br></pre></td></tr></table></figure></p>
+<p>又引入一个新的action，”count”，来计数特定可选参数出现的次数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ python3 prog.py 4</span><br><span class="line">16</span><br><span class="line">$ python3 prog.py 4 -v</span><br><span class="line">4^2 == 16</span><br><span class="line">$ python3 prog.py 4 -vv</span><br><span class="line">the square of 4 equals 16</span><br><span class="line">$ python3 prog.py 4 --verbosity --verbosity</span><br><span class="line">the square of 4 equals 16</span><br><span class="line">$ python3 prog.py 4 -v 1</span><br><span class="line">usage: prog.py [-h] [-v] square</span><br><span class="line">prog.py: error: unrecognized arguments: 1</span><br><span class="line">$ python3 prog.py 4 -h</span><br><span class="line">usage: prog.py [-h] [-v] square</span><br><span class="line"></span><br><span class="line">positional arguments:</span><br><span class="line">  square           display a square of a given number</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help       show this help message and exit</span><br><span class="line">  -v, --verbosity  increase output verbosity</span><br><span class="line">$ python3 prog.py 4 -vvv</span><br><span class="line">16</span><br></pre></td></tr></table></figure></p>
+<p>另外，当不显式使用可选参数时，其值为Nonetype，此时与int型值进行比较，会出现错误，可进行如下修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(&quot;square&quot;, type=int,</span><br><span class="line">                    help=&quot;display a square of a given number&quot;)</span><br><span class="line">parser.add_argument(&quot;-v&quot;, &quot;--verbosity&quot;, action=&quot;count&quot;, default=0,</span><br><span class="line">                    help=&quot;increase output verbosity&quot;)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line">answer = args.square**2</span><br><span class="line">if args.verbosity &gt;= 2:</span><br><span class="line">    print(&quot;the square of &#123;&#125; equals &#123;&#125;&quot;.format(args.square, answer))</span><br><span class="line">elif args.verbosity &gt;= 1:</span><br><span class="line">    print(&quot;&#123;&#125;^2 == &#123;&#125;&quot;.format(args.square, answer))</span><br><span class="line">else:</span><br><span class="line">    print(answer)</span><br></pre></td></tr></table></figure></p>
+<p>在add_argument方法中使用default参数，为可选参数指定默认值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python3 prog.py 4</span><br><span class="line">16</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-4-相互冲突的参耿"><a href="#2-4-相互冲突的参耿" class="headerlink" title="2.4 相互冲突的参耿"></a>2.4 相互冲突的参耿</h2><p>这一节将介绍add_mutually_exclusive_group()方法来处理相互冲突的参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(description=&quot;calculate X to the power of Y&quot;)</span><br><span class="line">group = parser.add_mutually_exclusive_group()</span><br><span class="line">group.add_argument(&quot;-v&quot;, &quot;--verbose&quot;, action=&quot;store_true&quot;)</span><br><span class="line">group.add_argument(&quot;-q&quot;, &quot;--quiet&quot;, action=&quot;store_true&quot;)</span><br><span class="line">parser.add_argument(&quot;x&quot;, type=int, help=&quot;the base&quot;)</span><br><span class="line">parser.add_argument(&quot;y&quot;, type=int, help=&quot;the exponent&quot;)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line">answer = args.x**args.y</span><br><span class="line"></span><br><span class="line">if args.quiet:</span><br><span class="line">    print(answer)</span><br><span class="line">elif args.verbose:</span><br><span class="line">    print(&quot;&#123;&#125; to the power &#123;&#125; equals &#123;&#125;&quot;.format(args.x, args.y, answer))</span><br><span class="line">else:</span><br><span class="line">    print(&quot;&#123;&#125;^&#123;&#125; == &#123;&#125;&quot;.format(args.x, args.y, answer))</span><br></pre></td></tr></table></figure></p>
+<p>通过add_mutually_exclustive_group()方法建立一个组，组中的可选参数无法共存。另外，向ArgumentParser()方法中添加description内容，可在帮助文档中输出当前程序的说明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ python3 prog.py 4 2</span><br><span class="line">4^2 == 16</span><br><span class="line">$ python3 prog.py 4 2 -q</span><br><span class="line">16</span><br><span class="line">$ python3 prog.py 4 2 -v</span><br><span class="line">4 to the power 2 equals 16</span><br><span class="line">$ python3 prog.py 4 2 -vq</span><br><span class="line">usage: prog.py [-h] [-v | -q] x y</span><br><span class="line">prog.py: error: argument -q/--quiet: not allowed with argument -v/--verbose</span><br><span class="line">$ python3 prog.py 4 2 -v --quiet</span><br><span class="line">usage: prog.py [-h] [-v | -q] x y</span><br><span class="line">prog.py: error: argument -q/--quiet: not allowed with argument -v/--verbose</span><br><span class="line">$ python3 prog.py --help</span><br><span class="line">usage: prog.py [-h] [-v | -q] x y</span><br><span class="line"></span><br><span class="line">calculate X to the power of Y</span><br><span class="line"></span><br><span class="line">positional arguments:</span><br><span class="line">  x              the base</span><br><span class="line">  y              the exponent</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help     show this help message and exit</span><br><span class="line">  -v, --verbose</span><br><span class="line">  -q, --quiet</span><br></pre></td></tr></table></figure>
+<h1 id="3-与main函数共同使用"><a href="#3-与main函数共同使用" class="headerlink" title="3 与main函数共同使用"></a>3 与main函数共同使用</h1><p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(&quot;-u&quot;, dest=&quot;url&quot;, type=str)</span><br><span class="line">    parser.add_argument(&quot;-d&quot;, dest=&quot;query&quot;, type=str)</span><br><span class="line">    parser.add_argument(&quot;-o&quot;, dest=&quot;outfile&quot;, type=str)</span><br><span class="line"></span><br><span class="line">    options = parser.parse_args()</span><br><span class="line">    main(**vars(options))</span><br></pre></td></tr></table></figure></p>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p>argparse模块提供了命令行向python程序传递参数的方法，更多的参数传递方法，将会在下一期中详细介绍。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">coding</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">argparse</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/读书笔记//" class="article-tag-list-link color5">读书笔记</a>
+        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http:www.meanmap.xyz/2019/06/15/python-argparse/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/06/12/python-copy/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python可变类型的浅拷贝与深拷贝</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -240,9 +386,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
