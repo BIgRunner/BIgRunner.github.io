@@ -9,14 +9,14 @@
   <title>python的正则表达式 | 自留地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="正则表达示是处理字符串与文件时很有用，可惜没有系统学习，每次用都只是用最基本的功能，这次618活动买了一本《Python编程快速上手——让繁琐的工作自动化》，正好花一些时间把这块知识补上。 正则表达式的工作原理是，利用预先定义的一些特殊字符与规则，通过这些特殊字符与规则的组合形成一种模式，之后在字符串中寻找符合模式的字符序列。下面用一个简单的例子来说明一下。">
-<meta name="keywords" content="python,coding">
+<meta name="keywords" content="python,coding,正则表达式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python的正则表达式">
 <meta property="og:url" content="www.meanmap.xyz/2019/06/29/python-regex/index.html">
 <meta property="og:site_name" content="自留地">
 <meta property="og:description" content="正则表达示是处理字符串与文件时很有用，可惜没有系统学习，每次用都只是用最基本的功能，这次618活动买了一本《Python编程快速上手——让繁琐的工作自动化》，正好花一些时间把这块知识补上。 正则表达式的工作原理是，利用预先定义的一些特殊字符与规则，通过这些特殊字符与规则的组合形成一种模式，之后在字符串中寻找符合模式的字符序列。下面用一个简单的例子来说明一下。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-28T16:42:47.488Z">
+<meta property="og:updated_time" content="2019-06-28T16:45:14.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python的正则表达式">
 <meta name="twitter:description" content="正则表达示是处理字符串与文件时很有用，可惜没有系统学习，每次用都只是用最基本的功能，这次618活动买了一本《Python编程快速上手——让繁琐的工作自动化》，正好花一些时间把这块知识补上。 正则表达式的工作原理是，利用预先定义的一些特殊字符与规则，通过这些特殊字符与规则的组合形成一种模式，之后在字符串中寻找符合模式的字符序列。下面用一个简单的例子来说明一下。">
@@ -178,11 +178,9 @@
         <p>正则表达示是处理字符串与文件时很有用，可惜没有系统学习，每次用都只是用最基本的功能，这次618活动买了一本《Python编程快速上手——让繁琐的工作自动化》，正好花一些时间把这块知识补上。</p>
 <p>正则表达式的工作原理是，利用预先定义的一些特殊字符与规则，通过这些特殊字符与规则的组合形成一种模式，之后在字符串中寻找符合模式的字符序列。下面用一个简单的例子来说明一下。</p>
 <a id="more"></a>
-<h1>1. 简单示例</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>phoneNumRegex = re.compile(<span class="string">r'\d\d\d-\d\d\d-\d\d\d\d'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mo = phoneNumRegex.search(<span class="string">'My number is 415-555-4242'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'Phone number found: '</span> + mo.group())</span><br><span class="line">Phone number found: <span class="number">415</span><span class="number">-555</span><span class="number">-4242</span></span><br></pre></td></tr></table></figure>
+<h1 id="1-简单示例"><a href="#1-简单示例" class="headerlink" title="1. 简单示例"></a>1. 简单示例</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>phoneNumRegex = re.compile(<span class="string">r'\d\d\d-\d\d\d-\d\d\d\d'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mo = phoneNumRegex.search(<span class="string">'My number is 415-555-4242'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'Phone number found: '</span> + mo.group())</span><br><span class="line">Phone number found: <span class="number">415</span><span class="number">-555</span><span class="number">-4242</span></span><br></pre></td></tr></table></figure>
 <p>上例中，首先引入特殊字符\d表示单个数字，\d\d\d-\d\d\d-\d\d\d\d形成一个3，4位间及6，7位间以-相连的10位的数字序列模式，通过search方法在字符串中寻找匹配的字符子串，并返回一个Match对象，调用Match对象的group方法，返回匹配的字符串。</p>
-<h1>2. 特殊字符</h1>
-<p>特殊字符是具有一定特殊意义的一类字符，在构建匹配模式时，影响匹配的字符类别或出现次数。</p>
+<h1 id="2-特殊字符"><a href="#2-特殊字符" class="headerlink" title="2. 特殊字符"></a>2. 特殊字符</h1><p>特殊字符是具有一定特殊意义的一类字符，在构建匹配模式时，影响匹配的字符类别或出现次数。</p>
 <table>
 <thead>
 <tr>
@@ -268,18 +266,15 @@
 <td>匹配除[]中字符之外的任意字符</td>
 </tr>
 <tr>
-<td>|</td>
+<td>\</td>
+<td></td>
 <td>逻辑或操作，匹配左或右字符串</td>
 </tr>
 </tbody>
 </table>
-<h1>3. 一些规则</h1>
-<p>所谓的规则是对匹配结果</p>
-<h2 id="3-1-利用括号分组"><a class="header-anchor" href="#3-1-利用括号分组">§</a>3.1 利用括号分组</h2>
-<p>在创建模式的时候加入()，可对匹配结果进行分组处理，如(\d\d\d)-(\d\d\d)-(\d\d\d\d)将匹配结果分为三组，在group()方法中传入数字，即可获得对应分组结果。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import re</span><br><span class="line">&gt;&gt;&gt; phoneNumRegex = re.compile(r&apos;(\d\d\d)-(\d\d\d-\d\d\d\d)&apos;)</span><br><span class="line">&gt;&gt;&gt; mo = phoneNumRegex.search(&apos;My number is 415-555-4242&apos;)</span><br><span class="line">&gt;&gt;&gt; mo.group(1)</span><br><span class="line">&apos;415&apos;</span><br><span class="line">&gt;&gt;&gt; mo.group(2)</span><br><span class="line">&apos;555-4242&apos;</span><br><span class="line">&gt;&gt;&gt; mo.group()</span><br><span class="line">&apos;415-555-4242&apos;</span><br><span class="line">&gt;&gt;&gt; mo.groups()</span><br><span class="line">(&apos;415&apos;, &apos;555-4242&apos;)</span><br></pre></td></tr></table></figure>
-<h2 id="3-2-compile的参数"><a class="header-anchor" href="#3-2-compile的参数">§</a>3.2 compile的参数</h2>
-<p>在创建匹配模式时，copile()方法提供了其他可选参数，</p>
+<h1 id="3-一些规则"><a href="#3-一些规则" class="headerlink" title="3. 一些规则"></a>3. 一些规则</h1><p>所谓的规则是对匹配结果</p>
+<h2 id="3-1-利用括号分组"><a href="#3-1-利用括号分组" class="headerlink" title="3.1 利用括号分组"></a>3.1 利用括号分组</h2><p>在创建模式的时候加入()，可对匹配结果进行分组处理，如(\d\d\d)-(\d\d\d)-(\d\d\d\d)将匹配结果分为三组，在group()方法中传入数字，即可获得对应分组结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import re</span><br><span class="line">&gt;&gt;&gt; phoneNumRegex = re.compile(r&apos;(\d\d\d)-(\d\d\d-\d\d\d\d)&apos;)</span><br><span class="line">&gt;&gt;&gt; mo = phoneNumRegex.search(&apos;My number is 415-555-4242&apos;)</span><br><span class="line">&gt;&gt;&gt; mo.group(1)</span><br><span class="line">&apos;415&apos;</span><br><span class="line">&gt;&gt;&gt; mo.group(2)</span><br><span class="line">&apos;555-4242&apos;</span><br><span class="line">&gt;&gt;&gt; mo.group()</span><br><span class="line">&apos;415-555-4242&apos;</span><br><span class="line">&gt;&gt;&gt; mo.groups()</span><br><span class="line">(&apos;415&apos;, &apos;555-4242&apos;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-2-compile的参数"><a href="#3-2-compile的参数" class="headerlink" title="3.2 compile的参数"></a>3.2 compile的参数</h2><p>在创建匹配模式时，copile()方法提供了其他可选参数，</p>
 <table>
 <thead>
 <tr>
@@ -304,16 +299,10 @@
 </table>
 <p>使用示例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="comment"># re.IGNORECASE or re.I</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>robocop = re.compile(<span class="string">r'robocop'</span>, re.I)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>robocop.search(<span class="string">'RoboCop is part man, part machine, all cop.'</span>).group()</span><br><span class="line"><span class="string">'RoboCop'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>robocop.search(<span class="string">'ROBOCOP protects the innocent.'</span>).group()</span><br><span class="line"><span class="string">'ROBOCOP'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># re.DOTALL</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>noNewlineRegex = re.compile(<span class="string">'.*'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>noNewlineRegex.search(<span class="string">'Serve the public trust.\nProtect the innocent.</span></span><br><span class="line"><span class="string">\nUphold the law.'</span>).group()</span><br><span class="line"><span class="string">'Serve the public trust.'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>newlineRegex = re.compile(<span class="string">'.*'</span>, re.DOTALL)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>newlineRegex.search(<span class="string">'Serve the public trust.\nProtect the innocent.</span></span><br><span class="line"><span class="string">\nUphold the law.'</span>).group()</span><br><span class="line"><span class="string">'Serve the public trust.\nProtect the innocent.</span></span><br><span class="line"><span class="string">\nUphold the law.'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># re.VERBOSE</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>phoneRegex = re.compile(<span class="string">r'''(</span></span><br><span class="line"><span class="string">    (\d&#123;3&#125;|\(\d&#123;3&#125;\))?                   # area code</span></span><br><span class="line"><span class="string">    (\s|-|\.)?                           # separator</span></span><br><span class="line"><span class="string">    \d&#123;3&#125;                                # first 3 digests</span></span><br><span class="line"><span class="string">    (\s|-|\.)                            # separator</span></span><br><span class="line"><span class="string">    \d&#123;4&#125;                                # last 4 digests</span></span><br><span class="line"><span class="string">    (\s*(exr|x|ext.)\s*\d&#123;2,5&#125;)?         # extension</span></span><br><span class="line"><span class="string">    )'''</span>, re.VERBOSE)</span><br></pre></td></tr></table></figure>
-<h1>4. 查找方法</h1>
-<h1>4.1 search()方法</h1>
-<p>传入一个字符串，在字符串中查找第一个符合模式的字符子串，返回一个Match对象，通过group()等方法。</p>
-<h1>4.2 findall()方法</h1>
-<p>与searc()方法不同，findall()方法在传入字符串中查找所有匹配的子串，并返回一个列表，如果调用在一个没有分组的正则表达式上，返回一个匹配字符串的列表；如果调用在一个有分组的正则表达式上，将返回一个字符串的元组的列表。</p>
-<h1>4.3 sub()方法</h1>
-<p>sub()方法实现替换功能，该方法接收两个参数，第一个参数为替换的字符内容，第二个参数为需要处理的字符串。sub()命令返回替换后的字符串。<br>
-如果想要保留部分内容，需要在正则模式中使用分组，并在替换内容中使用\1, \2表示相应保留的内容。</p>
-<h1>5. 常用正则表达式<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h1>
-<table>
+<h1 id="4-查找方法"><a href="#4-查找方法" class="headerlink" title="4. 查找方法"></a>4. 查找方法</h1><h1 id="4-1-search-方法"><a href="#4-1-search-方法" class="headerlink" title="4.1 search()方法"></a>4.1 search()方法</h1><p>传入一个字符串，在字符串中查找第一个符合模式的字符子串，返回一个Match对象，通过group()等方法。</p>
+<h1 id="4-2-findall-方法"><a href="#4-2-findall-方法" class="headerlink" title="4.2 findall()方法"></a>4.2 findall()方法</h1><p>与searc()方法不同，findall()方法在传入字符串中查找所有匹配的子串，并返回一个列表，如果调用在一个没有分组的正则表达式上，返回一个匹配字符串的列表；如果调用在一个有分组的正则表达式上，将返回一个字符串的元组的列表。</p>
+<h1 id="4-3-sub-方法"><a href="#4-3-sub-方法" class="headerlink" title="4.3 sub()方法"></a>4.3 sub()方法</h1><p>sub()方法实现替换功能，该方法接收两个参数，第一个参数为替换的字符内容，第二个参数为需要处理的字符串。sub()命令返回替换后的字符串。<br>如果想要保留部分内容，需要在正则模式中使用分组，并在替换内容中使用\1, \2表示相应保留的内容。</p>
+<h1 id="5-常用正则表达式-1"><a href="#5-常用正则表达式-1" class="headerlink" title="5. 常用正则表达式^1"></a>5. 常用正则表达式<a href="http://deerchao.net/tutorials/regex/common.htm" target="_blank" rel="noopener">^1</a></h1><table>
 <thead>
 <tr>
 <th>说明</th>
@@ -327,11 +316,15 @@
 </tr>
 <tr>
 <td>IP地址(IP Address)</td>
-<td>((2[0-4]\d|25[0-5]|[01]?\d\d?).){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)</td>
+<td>((2[0-4]\d\</td>
+<td>25[0-5]\</td>
+<td>[01]?\d\d?).){3}(2[0-4]\d\</td>
+<td>25[0-5]\</td>
+<td>[01]?\d\d?)</td>
 </tr>
 <tr>
 <td>电子邮件(Email)</td>
-<td>\w+([-+.]\w+)*@\w+([-.]\w+)*.\w+([-.]\w+)*</td>
+<td>\w+([-+.]\w+)<em>@\w+([-.]\w+)\</em>.\w+([-.]\w+)*</td>
 </tr>
 <tr>
 <td>QQ号码</td>
@@ -339,23 +332,34 @@
 </tr>
 <tr>
 <td>HTML标记(包含内容或自闭合)</td>
-<td>&lt;(.*)(.*)&gt;.*&lt;/\1&gt;|&lt;(.*) /&gt;</td>
+<td>&lt;(.*)(.*)&gt;.*&lt;\/\1&gt;\</td>
+<td>&lt;(.*) \/&gt;</td>
 </tr>
 <tr>
 <td>密码(由数字/大写字母/小写字母/标点符号组成，四种都必有，8位以上)</td>
-<td>(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?=.*[A-Z])(?=.*[a-z])(?!.*\n).*$</td>
+<td>(?=^.{8,}\$)(?=.*\d)(?=.*\W+)(?=.*[A-Z])(?=.*[a-z])(?!.*\n).*\$</td>
 </tr>
 <tr>
 <td>日期(年-月-日)</td>
-<td>(\d{4}|\d{2})-((1[0-2])|(0?[1-9]))-(([12][0-9])|(3[01])|(0?[1-9]))</td>
+<td>(\d{4}\</td>
+<td>\d{2})-((1[0-2])\</td>
+<td>(0?[1-9]))-(([12][0-9])\</td>
+<td>(3[01])\</td>
+<td>(0?[1-9]))</td>
 </tr>
 <tr>
 <td>日期(月/日/年)</td>
-<td>((1[0-2])|(0?[1-9]))/(([12][0-9])|(3[01])|(0?[1-9]))/(\d{4}|\d{2})</td>
+<td>((1[0-2])\</td>
+<td>(0?[1-9]))/(([12][0-9])\</td>
+<td>(3[01])\</td>
+<td>(0?[1-9]))/(\d{4}\</td>
+<td>\d{2})</td>
 </tr>
 <tr>
 <td>时间(小时:分钟, 24小时制)</td>
-<td>((1|0?)[0-9]|2[0-3]):([0-5][0-9])</td>
+<td>((1\</td>
+<td>0?)[0-9]\</td>
+<td>2[0-3]):([0-5][0-9])</td>
 </tr>
 <tr>
 <td>汉字(字符)</td>
@@ -367,7 +371,9 @@
 </tr>
 <tr>
 <td>中国大陆固定电话号码</td>
-<td>(\d{4}-|\d{3}-)?(\d{8}</td>
+<td>(\d{4}-\</td>
+<td>\d{3}-)?(\d{8}</td>
+<td>\d{7})</td>
 </tr>
 <tr>
 <td>中国大陆手机号码</td>
@@ -407,21 +413,9 @@
 </tr>
 </tbody>
 </table>
-<h1>6. 总结</h1>
-<p>以上是pythonn使用正则表达式匹配0字符串的基本方法，如果想要全面方习，这里有一份<a href="https://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html" target="_blank" rel="noopener">更全面的博文介绍</a><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p>
+<h1 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h1><p>以上是pythonn使用正则表达式匹配0字符串的基本方法，如果想要全面方习，这里有一份<a href="https://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html" target="_blank" rel="noopener">更全面的博文介绍</a><a href="https://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html" target="_blank" rel="noopener">^2</a>。</p>
 <p>这篇博文主要是正则表达式在python语言中的应用，其实正则表达式在文本处理领域应用广泛，如bash和vim中的文本处理等。</p>
-<p>另外，推荐一个<a href="http://tool.oschina.net/regex" target="_blank" rel="noopener">正则表达式的在线测试网站</a><sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>。</p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p><a href="http://deerchao.net/tutorials/regex/common.htm" target="_blank" rel="noopener">http://deerchao.net/tutorials/regex/common.htm</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p><a href="https://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html" target="_blank" rel="noopener">https://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p><a href="http://tool.oschina.net/regex" target="_blank" rel="noopener">http://tool.oschina.net/regex</a> <a href="#fnref3" class="footnote-backref">↩</a></p>
-</li>
-</ol>
-</section>
+<p>另外，推荐一个<a href="http://tool.oschina.net/regex" target="_blank" rel="noopener">正则表达式的在线测试网站</a><a href="http://tool.oschina.net/regex" target="_blank" rel="noopener">^3</a>。</p>
 
       
 
@@ -461,6 +455,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">coding</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">正则表达式</a>
         		</li>
       		
 		</ul>
@@ -671,14 +669,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -688,6 +678,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
